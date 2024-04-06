@@ -1,53 +1,43 @@
 ﻿using ClosedXML.Excel;
-using NLog;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinanceTracker
 {
-    public partial class Form1 : Form
+    public partial class FinanceTracker
     {
-        private static Logger _logger = LogManager.GetCurrentClassLogger();
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (openFileDialogExcelSheet.ShowDialog() == DialogResult.OK)
-                ReadSpreadSheetToGrid();
-             
-        }
-
+        DataTable DataTable { get; set; } = new DataTable();
         private void ReadSpreadSheetToGrid()
         {
             try
             {
                 var workbook = new XLWorkbook(openFileDialogExcelSheet.FileName);
                 var worksheet = workbook.Worksheets.First();
-                var dataTable = new DataTable();
+                //var dataTable = new DataTable();
 
                 // Add columns based on the first row (header row)
                 foreach (var headerCell in worksheet.Row(1).Cells())
                 {
-                    dataTable.Columns.Add(headerCell.Value.ToString(), typeof(string));
+                    DataTable.Columns.Add(headerCell.Value.ToString(), typeof(string));
                 }
 
                 // Add data rows from the worksheet (skip the header row)
                 for (int row = 2; row <= worksheet.Rows().Count(); row++)
                 {
-                    var dataRow = dataTable.NewRow();
+                    var dataRow = DataTable.NewRow();
                     for (int col = 1; col <= worksheet.Columns().Count(); col++)
                     {
                         dataRow[col - 1] = worksheet.Cell(row, col).Value.ToString();
                     }
-                    dataTable.Rows.Add(dataRow);
+                    DataTable.Rows.Add(dataRow);
                 }
 
-                dataGridView1.DataSource = dataTable;
+                dataGridView1.DataSource = DataTable;
             }
             catch (Exception ex)
             {
