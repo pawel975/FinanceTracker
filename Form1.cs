@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using NLog;
 using System;
 using System.Data;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace FinanceTracker
 {
     public partial class Form1 : Form
     {
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
         public Form1()
         {
             InitializeComponent();
@@ -49,6 +51,7 @@ namespace FinanceTracker
             }
             catch (Exception ex)
             {
+                _logger.Error(ex);
                 MessageBox.Show("Extension 'sql' is not supported. " +
                     "Supported extensions are '.xlsx', '.xlsm', '.xltx' and '.xltm'.");
             }
