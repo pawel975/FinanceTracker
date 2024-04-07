@@ -1,4 +1,8 @@
-﻿namespace FinanceTracker
+﻿using System.Drawing;
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+
+namespace FinanceTracker
 {
     partial class FinanceTracker
     {
@@ -28,17 +32,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.openFileDialogExcelSheet = new System.Windows.Forms.OpenFileDialog();
             this.buttonOpenExcelFile = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonGeneratePDFReport = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.openFileDialogExcelSheet = new System.Windows.Forms.OpenFileDialog();
+            this.textBoxFileName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // openFileDialogExcelSheet
-            // 
-            this.openFileDialogExcelSheet.FileName = "openFileDialog1";
-            this.openFileDialogExcelSheet.Filter = "Excel Files (*.xlsx;*.xlsm)|*.xlsx;*.xlsm|All Files (*.*)|*.*";
             // 
             // buttonOpenExcelFile
             // 
@@ -50,20 +48,9 @@
             this.buttonOpenExcelFile.UseVisualStyleBackColor = true;
             this.buttonOpenExcelFile.Click += new System.EventHandler(this.buttonOpenExcelFileClick);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(28, 127);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(604, 484);
-            this.dataGridView1.TabIndex = 1;
-            // 
             // buttonGeneratePDFReport
             // 
-            this.buttonGeneratePDFReport.Location = new System.Drawing.Point(206, 30);
+            this.buttonGeneratePDFReport.Location = new System.Drawing.Point(28, 96);
             this.buttonGeneratePDFReport.Name = "buttonGeneratePDFReport";
             this.buttonGeneratePDFReport.Size = new System.Drawing.Size(148, 41);
             this.buttonGeneratePDFReport.TabIndex = 2;
@@ -71,27 +58,41 @@
             this.buttonGeneratePDFReport.UseVisualStyleBackColor = true;
             this.buttonGeneratePDFReport.Click += new System.EventHandler(this.buttonGeneratePDFReportClick);
             // 
-            // Form1
+            // openFileDialogExcelSheet
+            // 
+            this.openFileDialogExcelSheet.FileName = "openFileDialog1";
+            this.openFileDialogExcelSheet.Filter = "Excel Files (*.xlsx;*.xlsm)|*.xlsx;*.xlsm|All Files (*.*)|*.*";
+            // 
+            // textBoxFileName
+            // 
+            this.textBoxFileName.Location = new System.Drawing.Point(207, 39);
+            this.textBoxFileName.Multiline = true;
+            this.textBoxFileName.Name = "textBoxFileName";
+            this.textBoxFileName.ReadOnly = true;
+            this.textBoxFileName.Size = new System.Drawing.Size(427, 25);
+            this.textBoxFileName.TabIndex = 3;
+            this.textBoxFileName.Text = "No file name provided...";
+            // 
+            // FinanceTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1104, 634);
+            this.Controls.Add(this.textBoxFileName);
             this.Controls.Add(this.buttonGeneratePDFReport);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonOpenExcelFile);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Name = "FinanceTracker";
+            this.Text = "Finance Tracker";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.OpenFileDialog openFileDialogExcelSheet;
         private System.Windows.Forms.Button buttonOpenExcelFile;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonGeneratePDFReport;
+        private System.Windows.Forms.OpenFileDialog openFileDialogExcelSheet;
+        private System.Windows.Forms.TextBox textBoxFileName;
     }
 }
 
