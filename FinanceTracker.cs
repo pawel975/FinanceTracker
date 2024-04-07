@@ -17,6 +17,9 @@ namespace FinanceTracker
     public partial class FinanceTracker : Form
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
+        readonly DataSet dataSet = new DataSet();
+
         public FinanceTracker()
         {
             QuestPDF.Settings.License = LicenseType.Community;
@@ -25,8 +28,15 @@ namespace FinanceTracker
 
         private void buttonOpenExcelFileClick(object sender, EventArgs e)
         {
-            if (openFileDialogExcelSheet.ShowDialog() == DialogResult.OK)
-                ReadSpreadSheetToGrid();
+            try
+            {
+                if (openFileDialogExcelSheet.ShowDialog() == DialogResult.OK)
+                    dataSet.Tables.Add(ReadSpreadSheetCells("B3", "D13", openFileDialogExcelSheet.FileName, "aktywa"));
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+            }
         }
 
         private void buttonGeneratePDFReportClick(object sender, EventArgs e)

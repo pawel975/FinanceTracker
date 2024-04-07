@@ -146,7 +146,7 @@
     <Compile Include="EventHandlersFunctions\GeneratePDFReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EventHandlersFunctions\ReadSpreadSheetToGrid.cs">
+    <Compile Include="EventHandlersFunctions\ReadSpreadSheetCells.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FinanceTracker.cs">
