@@ -24,6 +24,7 @@ namespace FinanceTracker
         {
             QuestPDF.Settings.License = LicenseType.Community;
             InitializeComponent();
+            buttonGeneratePDFReport.Enabled = false;
         }
 
         private void buttonOpenExcelFileClick(object sender, EventArgs e)
@@ -31,7 +32,10 @@ namespace FinanceTracker
             try
             {
                 if (openFileDialogExcelSheet.ShowDialog() == DialogResult.OK)
-                    dataSet.Tables.Add(ReadSpreadSheetCells("B3", "D13", openFileDialogExcelSheet.FileName, "aktywa"));
+                {
+                    dataSet.Tables.Add(ReadSpreadSheetCells("B2", "D13", openFileDialogExcelSheet.FileName, "aktywa"));
+                    buttonGeneratePDFReport.Enabled = true;
+                }
             }
             catch (Exception ex)
             {
@@ -41,7 +45,7 @@ namespace FinanceTracker
 
         private void buttonGeneratePDFReportClick(object sender, EventArgs e)
         {
-            GeneratePDFReport();
+                GeneratePDFReport();
         }
     }
 }
